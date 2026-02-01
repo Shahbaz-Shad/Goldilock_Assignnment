@@ -1,0 +1,76 @@
+
+1. Five Differences between Oracle and MySQL
+
+- Oracle is a commercial database, MySQL is open-source.
+- Oracle is used for large enterprise applications, MySQL for small to medium applications.
+- Oracle supports advanced SQL features like PL/SQL, MySQL has limited features.
+- Oracle provides high scalability and performance.
+- MySQL is easier to learn and use compared to Oracle.
+
+2. Tables A and B (id, name, date)
+
+a. Union of A and B
+SELECT * FROM A
+UNION
+SELECT * FROM B;
+
+b. Records present in A but not in B
+SELECT * FROM A
+WHERE id NOT IN (SELECT id FROM B);
+
+c. Records not in A and not in B
+Not possible without a third reference table.
+
+d. Count of records having same name more than 2 times in table A
+SELECT name, COUNT(*)
+FROM A
+GROUP BY name
+HAVING COUNT(*) > 2;
+
+3. Records with date greater than 1 April 2023
+SELECT * FROM A
+WHERE date > '2023-04-01';
+
+4. Records with date greater than 1 April 2023 and less than 3 April 2023
+SELECT * FROM A
+WHERE date > '2023-04-01' AND date < '2023-04-03';
+
+5. Records with date equal to 1 April 2023
+SELECT * FROM A
+WHERE date = '2023-04-01';
+
+6. Name conditions (Table A)
+
+a. Name starts with S
+SELECT * FROM A
+WHERE name LIKE 'S%';
+
+b. Name contains "so"
+SELECT * FROM A
+WHERE name LIKE '%so%';
+
+7. Tables C and D (id, name)
+SELECT C.id, CONCAT(C.name, ' ', D.name) AS full_name
+FROM C
+JOIN D ON C.id = D.id;
+
+8. Count of records with name 'Amitabh' in both tables
+SELECT COUNT(*) FROM (
+SELECT name FROM A WHERE name = 'Amitabh'
+UNION ALL
+SELECT name FROM B WHERE name = 'Amitabh'
+) t;
+
+9. Command to verify if MySQL is running
+
+Linux:
+systemctl status mysql
+
+Windows:
+net start | find "MySQL"
+
+10. List id and name of both tables A and B
+SELECT id, name FROM A
+UNION
+SELECT id, name FROM B;
+

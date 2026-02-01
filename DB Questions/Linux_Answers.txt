@@ -1,0 +1,44 @@
+
+1. List down 10 Linux commands
+ls        - list files
+pwd       - show current directory
+cd        - change directory
+cp        - copy files
+mv        - move/rename files
+rm        - remove files
+mkdir     - create directory
+rmdir     - remove directory
+cat       - view file content
+grep      - search text
+
+2. Command to find a particular pattern in a file
+grep "pattern" filename.txt
+
+3. Command to find a particular pattern in all files in multiple directories (recursive)
+grep -r "pattern" directory_name/
+
+4. Command to see last 10 lines in a file
+tail -n 10 filename.txt
+
+5. Command to see first 10 lines in a file
+head -n 10 filename.txt
+
+6. CSV file operations
+a) Extract third column into a new file
+cut -d',' -f3 input.csv > output.csv
+
+b) Find unique occurrence of integer values with count
+sort output.csv | uniq -c
+
+7. Convert JSON file to CSV format
+jq -r '.[] | [.field1, .field2, .field3] | @csv' input.json > output.csv
+
+8. CSV file with 4 columns – find count of records having length 14 in first column
+awk -F',' 'length($1)==14 {count++} END {print count}' file.csv
+
+9. Command to check if process XYZ is running
+ps -ef | grep XYZ
+
+10. Find PID of the process using TCP port number 10345
+lsof -i :10345
+
