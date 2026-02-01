@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .container {
+            width: 300px;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0px 0px 10px #aaa;
+            border-radius: 8px;
+        }
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type=submit] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .message {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .success { color: green; }
+        .failure { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+        {% if message %}
+            <div class="message {% if message == 'SUCCESS' %}success{% else %}failure{% endif %}">
+                {{ message }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
